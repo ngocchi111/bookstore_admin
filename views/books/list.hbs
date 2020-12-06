@@ -1,0 +1,13 @@
+<h1>Danh sách sản phẩm</h1>
+<form method="POST">
+<ul class="thumbnails">
+{{#each books}}
+    <a href="/{{status}}"></a> <button type="submit" name="deleteButton" value="{{_id}}">Xoá</button> </a> 
+    <a href="/{{status}}/{{_id}}"><input type="button" value="Sửa"></a></tr>
+    <tr><a>{{title}}</a> <a>  
+    <br/>
+    <a href="/insert"><input type="button" value="Thêm"></a>
+    <br>
+{{/each}}
+</ul>
+</form>
