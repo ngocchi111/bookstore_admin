@@ -2,9 +2,9 @@
 const {db} = require('../dal/db');
 const { ObjectId, Int32} = require('mongodb');
 
-exports.list = async (Status) => {
+exports.list = async (filter, pageNumber, itemPerPage) => {
     const booksCollection = db().collection('books');
-    const books = await booksCollection.find({status: Int32(Status)}).toArray();
+    const books = await booksCollection.find(filter).limit(itemPerPage).skip(itemPerPage*(pageNumber-1)).toArray();
     return books;
 }
 
@@ -14,9 +14,17 @@ exports.get = async (id) => {
     return book;
 }
 
+exports.count= async (filter) =>{
+    const booksCollection = db().collection('books');
+    const count = await booksCollection.count(filter);
+    return count;
+}
+
 exports.updata=async(id,obj)=>{
     const booksCollection = db().collection('books');
     const old ={_id :ObjectId(id)};
+    //obj.status=parseInt(obj.status);
+    //obj.basePrice=parseInt(obj.basePrice);
     booksCollection.updateOne(old,obj);
     return booksCollection;
 }

@@ -1,13 +1,12 @@
-<a>s</a>
-
 <form method="POST">
-<div>Tác Phẩm </div><input type="text"  name="title" placeholder="Nhập tên tác phẩm">
-<div>Link ảnh  </div><textarea rows="2" name="cover" placeholder="Nhập link ảnh"></textarea>
-<div>Tác giả  </div><input name="author" type="text" placeholder="Nhập tên tác giả">
-<div>Giá </div><input name="basePrice" type="text" placeholder="Nhập giá">
-<div>Nội dung  </div><textarea rows="3" name="detail" placeholder="Nhập nội dung"></textarea>
-<div>Trạng thái (1: đang trưng bày; 0: ẩn) </div><input type="number" name="status" min="0" max="1">
+<div>Tác Phẩm </div><input required="" size="50" type="text"  name="title" placeholder="Nhập tên tác phẩm">
+<div>Tác giả  </div><input required="" size="40" name="author" type="text" placeholder="Nhập tên tác giả">
+<div>Thể loại </div><input required="" size="40" name="catalog" type="text" placeholder="Nhập loại tác phẩm">
+<div>Link ảnh  </div><textarea required="" rows="2" cols="165%" name="cover" placeholder="Nhập link ảnh"></textarea>
+<div>Giá </div><div><input required="" name="basePrice" type="number" placeholder="Nhập giá">VND</div>
+<div>Nội dung  </div><textarea  required="" rows="5" cols="165%" name="detail" placeholder="Nhập nội dung"></textarea>
+<div>Trạng thái (1: đang trưng bày; 0: ẩn) </div><input type="number" name="status" min="0" max="1" value="1">
 <br>
-<a href="/1"><input type="button" value="Huỷ"> </a>
-<a href="/1"><input type="submit" value="Thêm"></a>
+<a href="books?status=1"><input type="button" value="Huỷ"> </a>
+<input type="submit" value="Thêm">
 </form>

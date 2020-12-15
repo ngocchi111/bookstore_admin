@@ -4,27 +4,66 @@
 <title>Online Book Store</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="/style.css" rel="stylesheet" type="text/css" />
-<link href="/assets/css/bootstrap.css" rel="stylesheet"/>
-<link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
-  <div>
-    <div>
-      <div left="450px" top="40px" width="400px" > <a href="/">Trang chủ</a> | <a href="/1">Danh sách sản phẩm đang bán</a> | <a href="/0">Danh sách sản phẩm ẩn</a> </lu></div> 
-      <!-- end nav -->
-    <!-- end header -->
-    <div id="wrapper">
-      <div class="inner">
-        <div class="span9">
-          {{{body}}}
+    <div id="templatemo_content">
+      <div id="templatemo_content_left">
+        <div id="templatemo_content_left_section">
+            <h3><a href="/">Trang chủ</a></h3>
+            <h3><a href="/books?status=1">Danh sách sản phẩm đang bán</a> </h3>
+            <h3><a href="/books?status=0">Danh sách sản phẩm ẩn</a></h3> 
         </div>
+        <div class="templatemo_content_left_section">
+            	<h1>Tìm kiếm</h1>
+                    <select id="status">
+                        <option value="status=1">đang bán</option>
+                        <option value="status=0">đang ẩn</option>
+                    </select>
+                    <select id="catalog">
+                        <option value="">Thể loại</option>
+                        <option value="Tiểu Thuyết">Tiểu thuyết</option>
+                        <option value="Truyện teen - Tuổi học trò">Truyện teen - Tuổi học trò</option>
+                        <option value="Tự giúp bản thân">Tự giúp bản thân</option>
+                        <option value="Truyện thơ">Truyện thơ</option>
+                        <option value="Phiêu lưu - Tưởng tượng - Thần Bí">Phiêu lưu - Tưởng tượng - Thần Bí</option>
+                        <option value="Tâm lý">Tâm lý</option>
+                        <option value="Kỹ năng sống">Kỹ năng sống</option>
+                        <option value="Sơ khai văn học">Sơ khai văn học</option>
+                        <option value="Văn học Việt Nam">Văn học Việt Nam</option>
+                        <option value="Tuỳ bút">Tuỳ bút</option>
+                        <option value="Hồi ký">Hồi ký</option>
+                    </select>
+                    <input id="search" type ="text"/>
+                    <input type="image" onclick="search()" src="/images/btn_search.gif"/>
+            </div>
+      </div>
+      <div id="templatemo_content_right">
+          {{{body}}}
       </div>
     </div>
-    <!-- end footer -->
-  </div>
-  <!-- end inner -->
-</div>
-<!-- end wrapper -->
 </body>
 </html>
+
+
+<script>
+ function search()
+ {
+    const q = document.getElementById("search").value;
+    const cat=document.getElementById("catalog").value;
+    const status=document.getElementById("status").value;
+    if (q!="")
+    {
+        if (cat!="")
+            window.location="/books?"+status+"&q="+q+"&cat="+cat;
+        else
+            window.location="/books?"+status+"&q="+q;
+    }
+    else
+    {
+        if (cat!="")
+           window.location="/books?"+status+"&cat="+cat;
+        else
+            window.location="/books?"+status;
+    }
+ }
+</script>

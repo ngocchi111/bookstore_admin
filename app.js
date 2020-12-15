@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -8,7 +10,6 @@ const { MongoClient } = require("mongodb");
 
 const usersRouter = require('./routes/users');
 const booksRouter = require('./routes/books');
-const indexRouter = require('./routes/index')
 
 require('./dal/db');
 

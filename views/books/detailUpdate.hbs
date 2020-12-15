@@ -1,12 +1,14 @@
 <form method="POST">
-  <div>ID</div><input type="text" name="id" value="{{_id}}" readonly>
-<div>Tác Phẩm </div><input type="text"  name="title" value="{{title}}">
-<div>Link ảnh  </div><textarea rows="2" name="cover">{{cover}}</textarea>
-<div>Tác giả  </div><input name="author" type="text"  value="{{author}}">
-<div>Giá </div><input name="basePrice" type="text"  value="{{basePrice}}">
-<div>Nội dung  </div><textarea rows="3" name="detail">{{detail}}</textarea>
-<div>Trạng thái (1: đang trưng bày; 0: ẩn) </div><input type="number" name="status" min="0" max="1" value="{{status}}">
-<br>
-<a href="/{{status}}"><input type="button" value="Huỷ"> </a>
-<a href="/{{status}}/{{_id}}"><input type="submit" value="Cập nhật"></a>
+    <div>ID</div><input size="22" type="text" name="id" value="{{_id}}" readonly>
+    <div>Tác Phẩm </div><input required="" size="50" type="text"  name="title" value="{{title}}">
+    <div>Tác giả  </div><input required="" size="40" name="author" type="text"  value="{{author}}">
+    <div>Thể loại </div><input required="" size="40" name="catalog" type="text" value="{{catalog}}">
+    <div>Link ảnh  </div><textarea required="" rows="2" cols="165%" name="cover">{{cover}}</textarea>
+
+    <div>Giá </div><div><input required="" name="basePrice" type="number"  value="{{basePrice}}">VND</div>
+    <div>Nội dung  </div><textarea required="" cols="165%" rows="5" name="detail">{{detail}}</textarea>
+    <div>Trạng thái (1: đang trưng bày; 0: ẩn) </div><input type="number" name="status" min="0" max="1" value="{{status}}">
+    <br>
+    <a href="/books?status={{status}}"><input type="button" value="Huỷ"> </a>
+    <input type="submit" value="Cập nhật">
 </form>

@@ -1,13 +1,81 @@
-<h1>Danh sách sản phẩm</h1>
+
+<div class="templatemo_product_box">
 <form method="POST">
-<ul class="thumbnails">
-{{#each books}}
-    <a href="/{{status}}"></a> <button type="submit" name="deleteButton" value="{{_id}}">Xoá</button> </a> 
-    <a href="/{{status}}/{{_id}}"><input type="button" value="Sửa"></a></tr>
-    <tr><a>{{title}}</a> <a>  
-    <br/>
+    <b style="font-size: 30px;">Danh sách sản phẩm</b>
+    {{#if _status}}
+    <b style="font-size: 30px;"> đang bán </b>
     <a href="/insert"><input type="button" value="Thêm"></a>
-    <br>
+    {{else}}
+    <b style="font-size: 30px;"> ẩn </b>
+    {{/if}}
+<table>
+    <colgroup>
+        <col width="45" span="1">
+        <col width="500" span="1">
+        <col width="500" span="1">
+        <col width="100" span="1">
+    </colgroup>
+    <tr>
+        <td style="color: blue; font-size:15px">STT</td>
+        <td style="color: blue; font-size:15px">Tên Sách</td>
+        <td style="color: blue; font-size:15px">Loại Sách</td>
+        <td style="color: blue; font-size:15px">Chỉnh sửa</td>
+    </tr>
+</table>
+<table>
+    <colgroup>
+        <col width="45" span="1">
+        <col width="500" span="1">
+        <col width="500" span="1">
+        <col width="100" span="1">
+    </colgroup>
+{{#each books}}
+    <tr>
+        <th></th>
+        <th>{{title}}</th>
+        <th>{{catalog}}</th>
+        <th><a href="/books/{{_id}}"><input type="button" value="Sửa"></a><button type="submit" name="deleteButton" value="{{_id}}">Xoá</button></th>
+    </tr>
 {{/each}}
-</ul>
+</table>
 </form>
+</div>
+
+<main>
+    {{#if hasPrevPage}}
+        {{#if _status}}
+        <a href="/books?status=1&page=1{{link}}"><h1> << </h1></a>
+        <a href="/books?status=1&page={{prevPage}}{{link}}"><h1> {{prevPage}} </h1></a>
+        {{else}}
+        <a href="/books?status=0&page=1{{link}}"><h1> << </h1></a>
+        <a href="/books?status=0&page={{prevPage}}{{link}}"><h1> {{prevPage}} </h1></a>
+        {{/if}}
+    {{/if}}
+    {{#if hasPage}}<h1 style="color: blue;">{{pageNumber}}</h1>{{/if}}
+    {{#if hasNextPage}}
+        {{#if _status}}
+        <a href="/books?status=1&page={{nextPage}}{{link}}"><h1> {{nextPage}} </h1></a>
+        <a href="/books?status=1&page={{lastPage}}{{link}}"><h1> >> </h1></a>
+        {{else}}
+        <a href="/books?status=0&page={{nextPage}}{{link}}"><h1> {{nextPage}} </h1></a>
+        <a href="/books?status=0&page={{lastPage}}{{link}}"><h1> >> </h1></a>
+        {{/if}}
+    {{/if}}
+</main>
+
+
+<style>
+table {
+    counter-reset: rowNumber;
+}
+
+table tr {
+    counter-increment: rowNumber;
+}
+
+table tr th:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+</style>
