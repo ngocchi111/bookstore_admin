@@ -7,11 +7,14 @@
 </head>
 <body>
     <div id="templatemo_content">
+        {{#if user}}
       <div id="templatemo_content_left">
         <div id="templatemo_content_left_section">
             <h3><a href="/">Trang chủ</a></h3>
             <h3><a href="/books?status=1">Danh sách sản phẩm đang bán</a> </h3>
             <h3><a href="/books?status=0">Danh sách sản phẩm ẩn</a></h3> 
+            <h3><a href="/infor">admin</a></h3>
+            <h3><a href="/users">Người dùng</a></h3> 
         </div>
         <div class="templatemo_content_left_section">
             	<h1>Tìm kiếm</h1>
@@ -37,6 +40,7 @@
                     <input type="image" onclick="search()" src="/images/btn_search.gif"/>
             </div>
       </div>
+      {{/if}}
       <div id="templatemo_content_right">
           {{{body}}}
       </div>

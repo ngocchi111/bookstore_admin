@@ -1,7 +1,10 @@
+const { ReplSet } = require('mongodb');
 const bookModel = require('../models/bookModel');
 
 exports.list = async (req, res, next) => {
     // Get books from model
+    if (req.user)
+    {
     const pageNumber = +req.query.page || 1;
     const itemPerPage = +req.query.item || 10;
     const Status =req.query.status;
@@ -37,14 +40,23 @@ exports.list = async (req, res, next) => {
          pageNumber,
          link,
     });
+    }
+    else 
+        res.redirect('/');
 }
 
 exports.insert = async (req, res, next) => {
+    if (req.user)
     res.render('books/detailInsert');
+    else
+        res.redirect('/');
 };
 
 exports.details = async (req, res, next) => {
+    if (req.user)
     res.render('books/detailUpdate', await bookModel.get(req.params.id));
+    else
+        res.redirect('/');
 }
 
 exports.postUpdata= async (req, res) => {

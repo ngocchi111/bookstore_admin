@@ -25,12 +25,12 @@ exports.updata=async(id,obj)=>{
     const old ={_id :ObjectId(id)};
     //obj.status=parseInt(obj.status);
     //obj.basePrice=parseInt(obj.basePrice);
-    booksCollection.updateOne(old,obj);
+    await booksCollection.updateOne(old,obj);
     return booksCollection;
 }
 
 exports.insert=async(obj)=>{
     const booksCollection = db().collection('books');
-    booksCollection.insertOne(obj);
+    await booksCollection.insertOne(obj);
     return booksCollection;
 }

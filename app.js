@@ -7,7 +7,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
 const { MongoClient } = require("mongodb");
+const session= require("express-session");
 
+const passport = require('./passport')
 const usersRouter = require('./routes/users');
 const booksRouter = require('./routes/books');
 
@@ -25,8 +27,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({secret:  process.env.SESSION_SECRET}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function (req, res, next){
+  res.locals.user=req.user;
+  next();
+});
+
 app.use('/',usersRouter);
-app.use('/', booksRouter);
+app.use('/books', booksRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

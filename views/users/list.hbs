@@ -1,0 +1,25 @@
+<input readonly value="Họ và tên" size="50px">
+<input readonly value="Tên đăng nhập" size="20px">
+<input readonly value="Trạng thái" size="20px">
+<input readonly value="Số dư" size="20px">
+<input readonly value="" size="10px">
+{{#each users}}
+<input readonly value="{{name}}" size="50px">
+<input readonly value="{{username}}" size="20px">
+<input readonly value="{{status}}" size="20px">
+<input readonly value="{{blane}}" size="20px">
+<a href="/users/{{_id}}"><input type="button" style="cursor: pointer;" value="Sửa" size="10px"></a>
+{{/each}}
+
+
+<main>
+  {{#if hasPrevPage}}
+        <a href="/users/history?page=1"><button style="cursor: pointer;"  onclick="page(1)"> << </button></a>
+        <a href="/users/history?page={{prevPage}}"><button style="cursor: pointer;"  onclick="page({{prevPage}})">{{prevPage}}</button></a>
+    {{/if}}
+    {{#if hasPage}}<button disabled>{{pageNumber}}</button>{{/if}}
+    {{#if hasNextPage}}
+        <a href="/users/history?page={{nextPage}}"><button style="cursor: pointer;"  onclick="page({{nextPage}})">{{nextPage}}</button></a>
+        <a href="/users/history?page={{lastPage}}"><button style="cursor: pointer;"  onclick="page({{lastPage}})"> >> </button></a>
+    {{/if}}
+</main>
